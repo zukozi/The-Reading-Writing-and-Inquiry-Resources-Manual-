@@ -66,6 +66,12 @@
       border-bottom: 2px solid #558b2f;
     }
 
+    .separator {
+      height: 2px;
+      background-color: #2d5016;
+      margin: 0;
+    }
+
     .main-content {
       max-width: 1200px;
       margin: 0 auto;
@@ -78,6 +84,37 @@
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       margin-bottom: 3rem;
+    }
+
+    .about-instructor {
+      background-color: #d4edda;
+      border: 3px solid #2d5016;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .about-instructor h2 {
+      font-size: 1.5rem;
+      color: #2d5016;
+      margin-bottom: 1rem;
+    }
+
+    .about-instructor p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-instructor ul {
+      list-style-position: inside;
+      padding-left: 2rem;
+      margin-top: 1rem;
+    }
+
+    .about-instructor li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
     }
 
     .course-section {
@@ -129,5 +166,23 @@
       </nav>
     </div>
   </header>
+
+  <div class="separator"></div>
+
+  <div class="main-content">
+    <section class="about-instructor" id="aboutyourinstructor">
+      <h2>About Your Instructor</h2>
+      <p>Welcome! This section is where you can introduce yourself to your students. Share your background, experience, teaching philosophy, and what makes you passionate about this subject. You might include information about:</p>
+      <ul>
+        <li>Your academic background and areas of expertise</li>
+        <li>Your teaching experience and approach</li>
+        <li>Your office hours and availability</li>
+        <li>How students can best reach you</li>
+        <li>What you hope students will learn from this course</li>
+      </ul>
+    </section>
+
+    <div class="separator"></div>
+  </div>
 </body>
 </html>
