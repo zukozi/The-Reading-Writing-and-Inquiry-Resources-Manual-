@@ -1,1 +1,1 @@
-# The-Reading-Writing-and-Inquiry-Resources-Manual-
+# The Reading Writing and Inquiry Resources Manual
