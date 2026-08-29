@@ -11,64 +11,116 @@
       box-sizing: border-box;
     }
     
+    :root {
+      --primary-dark: #1b4332;
+      --primary-medium: #2d6a4f;
+      --primary-light: #40916c;
+      --accent-blue: #1e3a8a;
+      --accent-light: #e8f5e9;
+      --accent-lighter: #f1f5fe;
+      --text-dark: #1a1a1a;
+      --text-light: #555555;
+      --border-color: #e0e0e0;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
       line-height: 1.6;
-      color: #333;
+      color: var(--text-dark);
+      background-color: #fafafa;
     }
     
     header {
-      background-color: #C8E6C9;
-      padding: 3rem 0 2rem 0;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%);
+      padding: 4rem 0 3rem 0;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%);
+      pointer-events: none;
     }
     
     .header-content {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
+      position: relative;
+      z-index: 1;
     }
     
     h1 {
-      font-size: 2.5rem;
-      color: #2d5016;
+      font-size: 3rem;
+      color: #ffffff;
       margin-bottom: 0.5rem;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: -1px;
     }
     
     .subtitle {
-      font-size: 1.3rem;
-      color: #558b2f;
-      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2.5rem;
       font-weight: 400;
+      letter-spacing: 0.5px;
     }
     
     nav {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
+      padding: 0 1rem;
     }
     
     nav a {
-      color: #2d5016;
+      color: rgba(255, 255, 255, 0.95);
       text-decoration: none;
       font-weight: 500;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
       transition: all 0.3s ease;
-      border-bottom: 2px solid transparent;
+      border-radius: 4px;
+      position: relative;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
     }
     
     nav a:hover {
-      color: #558b2f;
-      border-bottom: 2px solid #558b2f;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    nav a:hover::after {
+      width: calc(100% - 2.4rem);
     }
 
     .separator {
-      height: 2px;
-      background-color: #2d5016;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border-color), transparent);
       margin: 0;
     }
 
@@ -81,40 +133,49 @@
     .main-content img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
       margin-bottom: 3rem;
     }
 
     .about-instructor {
-      background-color: #d4edda;
-      border: 3px solid #2d5016;
-      padding: 2rem;
-      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-light) 0%, rgba(64, 145, 108, 0.05) 100%);
+      border: 1px solid rgba(64, 145, 108, 0.2);
+      padding: 2.5rem;
+      border-radius: 12px;
       margin-top: 2rem;
       margin-bottom: 3rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .about-instructor:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .about-instructor h2 {
-      font-size: 1.5rem;
-      color: #2d5016;
-      margin-bottom: 1rem;
+      font-size: 1.75rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
     }
 
     .about-instructor p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       line-height: 1.8;
+      color: var(--text-light);
     }
 
     .about-instructor ul {
       list-style-position: inside;
       padding-left: 2rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
 
     .about-instructor li {
       margin-bottom: 0.8rem;
-      line-height: 1.6;
+      line-height: 1.7;
+      color: var(--text-light);
     }
 
     .reading-resources {
@@ -123,107 +184,132 @@
 
     .reading-resources h2 {
       font-size: 2.2rem;
-      color: #2d5016;
-      background-color: #d1d9ff;
-      padding: 1rem 1.5rem;
+      color: var(--text-dark);
+      background: linear-gradient(135deg, var(--accent-lighter) 0%, rgba(30, 58, 138, 0.05) 100%);
+      padding: 1.5rem 2rem;
       text-align: center;
-      border-radius: 8px;
-      margin-bottom: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+      border: 1px solid rgba(30, 58, 138, 0.1);
     }
 
     .reading-resources h3 {
-      font-size: 1.3rem;
-      color: #2d5016;
-      background-color: #d1d9ff;
-      padding: 0.75rem 1.5rem;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+      background: linear-gradient(135deg, var(--accent-lighter) 0%, rgba(30, 58, 138, 0.05) 100%);
+      padding: 1rem 1.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
       border-radius: 8px;
+      border-left: 4px solid var(--primary-light);
+      font-weight: 600;
     }
 
     .reading-resources h4 {
-      font-size: 1.1rem;
-      color: #333;
-      margin-top: 1.5rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+      margin-top: 1.8rem;
+      margin-bottom: 1rem;
       font-weight: 600;
     }
 
     .reading-resources p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       line-height: 1.8;
+      color: var(--text-light);
     }
 
     .reading-resources ul {
       list-style-position: inside;
       padding-left: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .reading-resources li {
-      margin-bottom: 0.8rem;
-      line-height: 1.6;
+      margin-bottom: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-light);
     }
 
     .reading-resources a {
-      color: #0e68b3;
+      color: var(--accent-blue);
       text-decoration: none;
       font-weight: 500;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid transparent;
     }
 
     .reading-resources a:hover {
-      text-decoration: underline;
+      color: var(--primary-light);
+      border-bottom: 1px solid var(--primary-light);
     }
 
     .blockquote {
-      border-left: 4px solid #2d5016;
-      padding-left: 1.5rem;
-      margin: 1.5rem 0;
+      border-left: 4px solid var(--primary-light);
+      padding: 1.5rem 2rem;
+      margin: 2rem 0;
       font-style: italic;
-      color: #555;
+      color: var(--text-light);
+      background-color: rgba(64, 145, 108, 0.04);
+      border-radius: 4px;
+    }
+
+    .blockquote p {
+      margin-bottom: 0.8rem;
+    }
+
+    .blockquote strong {
+      font-style: normal;
+      color: var(--text-dark);
     }
 
     .highlight-blue {
-      color: #0e68b3;
+      color: var(--accent-blue);
       font-weight: 600;
     }
 
     .highlight-red {
-      color: #c71f23;
+      color: #d32f2f;
       font-weight: 600;
     }
 
     .mla-note {
-      background-color: #f0f0f0;
-      padding: 1rem 1.5rem;
-      border-left: 4px solid #0e68b3;
-      margin: 1rem 0;
-      border-radius: 4px;
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.05) 0%, rgba(30, 58, 138, 0.02) 100%);
+      padding: 1.5rem 2rem;
+      border-left: 4px solid var(--accent-blue);
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      border: 1px solid rgba(30, 58, 138, 0.1);
     }
 
     .mla-note strong {
-      color: #0e68b3;
+      color: var(--accent-blue);
       text-decoration: underline;
     }
 
     .course-section {
-      background-color: #d1d9ff;
-      padding: 2rem;
-      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-lighter) 0%, rgba(30, 58, 138, 0.05) 100%);
+      padding: 2.5rem;
+      border-radius: 12px;
       margin-top: 2rem;
+      border: 1px solid rgba(30, 58, 138, 0.1);
+      box-shadow: var(--shadow-sm);
     }
 
     .course-section h2 {
-      font-size: 1.5rem;
-      color: #000000;
-      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
       text-align: center;
+      font-weight: 600;
     }
 
     .course-section h3 {
       font-size: 1.2rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary-medium);
     }
 
     .course-section ul {
@@ -232,13 +318,54 @@
     }
 
     .course-section li {
-      margin-bottom: 0.8rem;
-      line-height: 1.6;
+      margin-bottom: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-light);
     }
 
     .highlight {
-      color: #0e68b3;
+      color: var(--accent-blue);
       font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      nav {
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      nav a {
+        padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      .main-content {
+        padding: 2rem 1rem;
+      }
+
+      .about-instructor,
+      .course-section {
+        padding: 1.5rem;
+      }
+
+      .reading-resources h2 {
+        font-size: 1.6rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .reading-resources h3 {
+        font-size: 1.1rem;
+        padding: 0.75rem 1rem;
+        margin-top: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -261,7 +388,7 @@
   <div class="main-content">
     <section class="about-instructor" id="aboutyourinstructor">
       <h2>About Your Instructor</h2>
-      <p>Welcome! This section is where you can introduce yourself to your students. Share your background, experience, teaching philosophy, and what makes you passionate about this subject. You might include information about:</p>
+      <p>Welcome! This section is where you can introduce yourself to your students. Share your background, experience, teaching philosophy, and what makes you passionate about this subject. You might[...]
       <ul>
         <li>Your academic background and areas of expertise</li>
         <li>Your teaching experience and approach</li>
@@ -280,46 +407,46 @@
       <ul>
         <li>Briefly return to the Writing Process</li>
         <li>Synthesize what we have learned into an Analytical Toolkit</li>
-        <li>Prepare you to start your Inquiry Notebooks as soon as you can; it's our <span class="highlight-blue">First Step</span> in the Unit 1 Writing Process (<span class="highlight-blue">percolating</span>, <span class="highlight-blue">pre-writing</span>, <span class="highlight-blue">brainstorming</span>, and reading)</li>
+        <li>Prepare you to start your Inquiry Notebooks as soon as you can; it's our <span class="highlight-blue">First Step</span> in the Unit 1 Writing Process (<span class="highlight-blue">percolat[...]
       </ul>
 
       <h3>The Writing Process</h3>
-      <p>The title of this course is Reading, Writing, and Inquiry; I like to assume that the course title is a reference to the recursive nature of the Writing Process. As I mentioned before, in order to read, you need to write, in order to write, you need to inquire, in order to inquire, you need to read, and so on and so forth.</p>
+      <p>The title of this course is Reading, Writing, and Inquiry; I like to assume that the course title is a reference to the recursive nature of the Writing Process. As I mentioned before, in orde[...]
       
-      <p>The Writing Process is very much the same in that it is not a simple step process. It is in fact a very messy process that requires us to go back and forth between all its five stages: pre-writing; drafting; peer review and revision; editing; and final draft. As you will see later in the semester, the final draft you submitted is not really your final draft. After receiving my feedback, you will have to go back to revision.</p>
+      <p>The Writing Process is very much the same in that it is not a simple step process. It is in fact a very messy process that requires us to go back and forth between all its five stages: pre-wr[...]
       
-      <p>I have seen various versions of the Writing Process diagrams, but I chose to modify the open-access image below with the activities that may go into each step. If I had a preference for the titles of each section of the diagram, I would remove revision from peer review and include it with editing in order to emphasize the difference between revision and editing. They are not one and the same. Revision requires deep critical thinking, further analysis, more inquiry, re-organization, etc. while editing refers to correcting errors in grammar, spelling, mechanics, and formatting. Editing is likely the least important part of the Writing Process as far as this class is concerned.</p>
+      <p>I have seen various versions of the Writing Process diagrams, but I chose to modify the open-access image below with the activities that may go into each step. If I had a preference for the t[...]
       
-      <p>What I know is that each step of the Writing Process can become a source of frustration and anxiety: from not being able to settle on a topic to having trouble finding sources to realizing you need to go back to drafting and revising your paper before final submission. I just want to re-assure you that I would much rather receive your "shitty first drafts" than AI generated papers that read exactly like the last AI generated paper I read.</p>
+      <p>What I know is that each step of the Writing Process can become a source of frustration and anxiety: from not being able to settle on a topic to having trouble finding sources to realizing yo[...]
       
-      <p>If you choose to cave (for whatever reason) and use AI for pre-writing and brainstorming, you risk the possibility of broad and unoriginal inquiry, and then you risk running with it to the research and drafting stage, at which point, I get duplicate essays with somewhat different topics but the same set of sources, etc. There are severe penalties for using AI at any stage of your assignments unless you are specifically told in the directions to do so. I just recommend not taking the "you might trick me" and "you might not" gamble here. I will return to unethical uses of AI for this course later in Unit 1, since there are various ways that you could potentially contaminate your essay with AI without intending to do so. For example, taking your fully original draft and asking AI to make it sound more academic or formal destroys the essays by taking away your own voice that I really want to hear and for you to develop!</p>
+      <p>If you choose to cave (for whatever reason) and use AI for pre-writing and brainstorming, you risk the possibility of broad and unoriginal inquiry, and then you risk running with it to the re[...]
       
-      <p>Because we do now have this temptation to write AI prompts instead of essays, I included the AI discussion in this section, because once again, I know that any stage of the Writing Process can stump us into a writer's block and more anxiety than anybody needs. Instead of turning to AI when you get stumped, please turn to me during Office Hours instead. I assure you that you are capable of doing the work ahead of us and I once again assure you that "shitty first drafts" are welcomed and encouraged. Even if you need help with the first stage of the writing process or pre-writing, I am here for you!</p>
+      <p>Because we do now have this temptation to write AI prompts instead of essays, I included the AI discussion in this section, because once again, I know that any stage of the Writing Process ca[...]
       
-      <p><strong>Note:</strong> My use of "shitty first drafts" above is a reference to <a href="https://wrd.as.uky.edu/sites/default/files/1-Shitty%20First%20Drafts.pdf" target="_blank">Anne Lammot's 1984 essay "Shitty First Drafts."</a></p>
+      <p><strong>Note:</strong> My use of "shitty first drafts" above is a reference to <a href="https://wrd.as.uky.edu/sites/default/files/1-Shitty%20First%20Drafts.pdf" target="_blank">Anne Lammot's[...]
 
-      <img src="Untitled - August 28, 2026 at 21.33.11 (1).png" alt="The Writing Process diagram showing the recursive nature of the process with arrows moving in both directions. The steps include pre-writing, drafting, peer review and revision, editing, and final draft.">
+      <img src="Untitled - August 28, 2026 at 21.33.11 (1).png" alt="The Writing Process diagram showing the recursive nature of the process with arrows moving in both directions. The steps include pr[...]
 
       <h3>Our Analytical Toolkit</h3>
 
       <h4>What Is Analysis?</h4>
       <div class="blockquote">
         <p><strong>According to David Rosenwasser and Jill Stephen in <em>Writing Analytically (8th Ed.)</em>:</strong></p>
-        <p style="margin-left: 2rem;">To analyze something is to ask what something means. It is to ask how something does what it does or why it is as it is. Analysis is a form of detective work. It typically pursues something puzzling, something you are seeking to understand rather than something you believe you already have answers to. Analysis finds questions where there seemed not to be any, and it makes connections that may not have been evident at first. Analysis is, then, more than a set of skills: it is a frame of mind, an attitude toward experience. (3-4)</p>
-        <p>In their newest edition of <em>Writing Analytically</em>, Rosenwasser and Stephen likewise mention that analytical writing "is necessary in situations where there is more than one 'right answer' or perhaps no right answer" and that "even when there seems to be a right answer, inquiry-based writing looks at some feature of the subject where there is room for more than one way of understanding" (4).</p>
+        <p style="margin-left: 2rem;">To analyze something is to ask what something means. It is to ask how something does what it does or why it is as it is. Analysis is a form of detective work. It [...]
+        <p>In their newest edition of <em>Writing Analytically</em>, Rosenwasser and Stephen likewise mention that analytical writing "is necessary in situations where there is more than one 'right an[...]
       </div>
 
       <div class="mla-note">
-        <p><strong><span class="highlight-blue" style="text-decoration: underline;">Quick Style Aside:</span></strong> Since we all said we were 4/5 stars confident on our MLA Style skills, wouldn't it be great to get to a 5/5?</p>
-        <p style="margin-top: 1rem;"><strong><span class="highlight-blue" style="text-decoration: underline;">First Quote:</span></strong> If it was written in Microsoft Word, it would be more than four lines of text. With a quote longer than four lines of text you need to set the quote up as a block quotation. A block quotation is a free-standing block of text and is set .5 in. from the left margin. Notice that the text is not in quotation marks and the in-text citation comes after and <span style="text-decoration: underline;">not</span> before the last punctuation mark in the quote.</p>
-        <p style="margin-top: 1rem;"><strong><span class="highlight-blue" style="text-decoration: underline;">Second and Third Quotes:</span></strong> Since I already mentioned the authors' first names, I do not repeat them again later. I incorporated two quotes in one sentence, and because this is a short quotation, I cited the page number before the punctuation mark. If you have two short quotes about one topic you want to use in a sentence like the one above and the page numbers are different, add the page number after each quote in parentheses.</p>
+        <p><strong><span class="highlight-blue" style="text-decoration: underline;">Quick Style Aside:</span></strong> Since we all said we were 4/5 stars confident on our MLA Style skills, wouldn't i[...]
+        <p style="margin-top: 1rem;"><strong><span class="highlight-blue" style="text-decoration: underline;">First Quote:</span></strong> If it was written in Microsoft Word, it would be more than fo[...]
+        <p style="margin-top: 1rem;"><strong><span class="highlight-blue" style="text-decoration: underline;">Second and Third Quotes:</span></strong> Since I already mentioned the authors' first name[...]
       </div>
 
       <h3>Rhetorical Analysis with the Five Analytical Moves</h3>
 
       <h4>Move 1: Suspend Judgement</h4>
       <ul>
-        <li>Delay judgement as you identify your own biases towards the quickest information we need to know and can gleam about the text. Maybe you do not agree with the author's views or maybe you do not care for the context, particular situation, or topic.
+        <li>Delay judgement as you identify your own biases towards the quickest information we need to know and can gleam about the text. Maybe you do not agree with the author's views or maybe you d[...]
           <ul>
             <li>You should figure out the following about a text before you move forward with further analytical moves:
               <ul>
@@ -360,7 +487,7 @@
         <li>Apply "The Method" to Dig Deeper into the Rhetorical Situation</li>
         <li>What repeats? What goes with what? (Strands) What is opposed to what? (Binaries) What doesn't fit? (Anomalies)
           <ul>
-            <li><strong>Intended Rhetorical Effect:</strong> how the author intends for a rhetorical choice to affect the audience; by using <strong>The Method</strong> you can connect important rhetorical choices to interpret a cumulative intended effect on the audience</li>
+            <li><strong>Intended Rhetorical Effect:</strong> how the author intends for a rhetorical choice to affect the audience; by using <strong>The Method</strong> you can connect important rheto[...]
           </ul>
         </li>
       </ul>
@@ -371,32 +498,32 @@
       </ul>
 
       <h3>Rhetorical Analysis in Motion</h3>
-      <p style="background-color: #d1d9ff; padding: 1rem 1.5rem; text-align: center; border-radius: 8px; font-size: 1.1rem; margin: 2rem 0;"><strong>The <span style="color: #000;">author</span> did <span class="highlight-red">X</span> in order to <span class="highlight-blue">Y</span>.</strong></p>
+      <p style="background: linear-gradient(135deg, var(--accent-lighter) 0%, rgba(30, 58, 138, 0.05) 100%); padding: 1rem 1.5rem; text-align: center; border-radius: 8px; font-size: 1.1rem; margin: 2rem 0; border: 1px solid rgba(30, 58, 138, 0.1);"><strong>The <span style="color: var(--primary-dark);">author</span> did <s[...]
 
       <p><strong>The above phrase is the easiest way for me to remember the basis of textual analysis.</strong></p>
 
-      <p>In other words, in order to achieve their <strong>purpose</strong>, <strong>the author</strong> made <strong><span class="highlight-red">rhetorical choice(s) X</span></strong> with <strong><span class="highlight-blue">intended effect(s) Y</span></strong> on their <strong>intended audience(s).</strong></p>
+      <p>In other words, in order to achieve their <strong>purpose</strong>, <strong>the author</strong> made <strong><span class="highlight-red">rhetorical choice(s) X</span></strong> with <strong><s[...]
 
-      <p>When you employ <strong>Notice, Focus and Rank, So What,</strong> and <strong>The Method</strong> on a text, you are setting yourself up for identifying analysis-worthy aspects of the Rhetorical Situation, and importantly, moving toward your own interpretation of the author's rhetorical choices as tied to their intended effects on the audience and overall purpose.</p>
+      <p>When you employ <strong>Notice, Focus and Rank, So What,</strong> and <strong>The Method</strong> on a text, you are setting yourself up for identifying analysis-worthy aspects of the Rhetori[...]
 
-      <p>You have to be able to explain the relationship between the author, choices, effects, audience, and overall purpose without assuming that the connection is obvious to your own audience. Too often students only present evidence without analysis, and worse yet, implications. Here is another phrase I want you to remember when writing, analyzing, and composing paragraphs in the future:</p>
+      <p>You have to be able to explain the relationship between the author, choices, effects, audience, and overall purpose without assuming that the connection is obvious to your own audience. Too o[...]
 
-      <p style="background-color: #d1d9ff; padding: 1rem 1.5rem; text-align: center; border-radius: 8px; font-size: 1.1rem; margin: 2rem 0;"><strong>When <span class="highlight-red">NOT</span> in doubt, spell it out.</strong></p>
+      <p style="background: linear-gradient(135deg, var(--accent-lighter) 0%, rgba(30, 58, 138, 0.05) 100%); padding: 1rem 1.5rem; text-align: center; border-radius: 8px; font-size: 1.1rem; margin: 2rem 0; border: 1px solid rgba(30, 58, 138, 0.1);"><strong>When <span class="highlight-red">NOT</span> in doub[...]
 
-      <p>Below is a rhetorical analysis example you should be familiar with. I am writing this in third person with MLA considerations to emphasize how we would analyze a text more formally. It will demonstrate to you a simple analysis of one specific rhetorical choice in motion:</p>
+      <p>Below is a rhetorical analysis example you should be familiar with. I am writing this in third person with MLA considerations to emphasize how we would analyze a text more formally. It will d[...]
 
       <div class="blockquote">
-        <p>When creating the Course Syllabus and Course Logo, first-year writing instructor Zuzanna Koziatek chose to include her own mixed media painting "We're Only Here for the View" as the header in order to immediately set up the centrality of inquiry into a phenomenon throughout all three major assignments. The painting's focal point is a flying saucer, which is likewise, an unidentified phenomenon. Considering that Koziatek's students will have to start collecting observations in their Inquiry Notebooks in the second week of class, emphasis on the centrality of the phenomenon is especially crucial. After all, their Inquiry Notebooks will directly lead them to a phenomenon worthy of inquiry for this semester and need to be taken seriously. While the Inquiry Notebook Assignment is an important part of the Unit 1 Lens-Based Analysis Pre-Writing worth 3% of their total course grade, it will be largely done away from the computer, in a notebook, and over a period of a couple weeks. Thus, the constant repetition of the flying saucer is meant to remind students that they need to keep coming back to their search for a phenomenon and mindfully write inside their Inquiry Notebooks with consistency.</p>
+        <p>When creating the Course Syllabus and Course Logo, first-year writing instructor Zuzanna Koziatek chose to include her own mixed media painting "We're Only Here for the View" as the header [...]
 
-        <p>Moreover, "We're Only Here for the View" is also a part of her overall purpose to make the remote online classroom feel more like a community rather than a lonely computer screen. Instead of finding a similar image online, Koziatek decides to share her own creation, in part, to reveal her less academic side and to signal to her students that their originality, stories, and who they are matter in her classroom, whether during online meetings or asynchronous discussions. As a composition instructor, she also understands that writing is collaborative and that who we are matters a whole lot to the writing process. Ultimately, she wants her students to make progress in their individual reading, writing, and inquiry journeys. While this choice and overall strategy could be helpful in all remote classroom environments, it is especially important to freshmen as they are new to university life and are in the midst of making friends. Likewise, some of them may have never taken an online class before, so Koziatek's focus on community-building, down to a small choice like including her own painting, is intended to alleviate any new pressure some of her students might be feeling.</p>
+        <p>Moreover, "We're Only Here for the View" is also a part of her overall purpose to make the remote online classroom feel more like a community rather than a lonely computer screen. Instead o[...]
       </div>
 
-      <p>Notice that before the example, I mentioned that this was a simple analysis of one rhetorical choice. However, a more productive analysis would utilize <strong>Moves 2 and 4</strong> to identify more rhetorical choices, as in <strong>Notice, Focus, and Rank</strong> as well as <strong>The Method</strong>. Instead of zoning in on just one rhetorical choice, reviewing my course design as a text would enable me to cluster similar rhetorical choices in content and form into strands, binaries, and anomalies. From there, I would be able to give a specific set of rhetorical choices a name while tying it to one intended effect or effects and overall purpose instead.</p>
+      <p>Notice that before the example, I mentioned that this was a simple analysis of one rhetorical choice. However, a more productive analysis would utilize <strong>Moves 2 and 4</strong> to ident[...]
 
-      <p>In short, we are looking for more complexity with analysis than what I offered you above, but I wanted to demonstrate in the most basic way, how to tie rhetorical choices to immediate intended effects on the audience and overall purpose.</p>
+      <p>In short, we are looking for more complexity with analysis than what I offered you above, but I wanted to demonstrate in the most basic way, how to tie rhetorical choices to immediate intende[...]
 
       <div class="blockquote">
-        <p>To offer you more analytical complexity for my Course Design using The Method, we might consider the physical/technological binary opposition apparent throughout the assignments as well as your necessary materials for this class. On the one hand, this is a remote course built in mind with online accessibility. On the other hand, I am asking you to: become familiar with the printers and scanners at IU; get yourself a physical notebook and pen as well as a drawing pad and colored pencils; and complete assignments without the use of technology. You are my audience. <strong>What was my intended effect (Y) on you with the physical/technological binary (X) and how does it tie to my overall purpose of you reaching your learning outcomes this semester?</strong></p>
+        <p>To offer you more analytical complexity for my Course Design using The Method, we might consider the physical/technological binary opposition apparent throughout the assignments as well as [...]
       </div>
     </section>
 
