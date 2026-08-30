@@ -79,7 +79,8 @@
       letter-spacing: 0.5px;
     }
     
-    nav {
+    /* main site nav (appears on every page) */
+    nav.main-nav {
       display: flex;
       justify-content: center;
       gap: 1.5rem;
@@ -87,7 +88,7 @@
       padding: 0 1rem;
     }
     
-    nav a {
+    nav.main-nav a {
       color: rgba(255, 255, 255, 0.95);
       text-decoration: none;
       font-weight: 500;
@@ -98,7 +99,7 @@
       position: relative;
     }
     
-    nav a::after {
+    nav.main-nav a::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -110,12 +111,49 @@
       transform: translateX(-50%);
     }
     
-    nav a:hover {
+    nav.main-nav a:hover {
       background-color: rgba(255, 255, 255, 0.15);
     }
 
-    nav a:hover::after {
+    nav.main-nav a:hover::after {
       width: calc(100% - 2.4rem);
+    }
+
+    /* reading-specific subnav (separate) */
+    .reading-nav-wrapper {
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    nav.reading-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    nav.reading-nav a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    nav.reading-nav a:hover,
+    nav.reading-nav a:focus {
+      background: var(--accent-lighter);
+      outline: none;
+    }
+
+    nav.reading-nav a.active {
+      background: var(--accent-light);
+      color: var(--accent-blue);
     }
 
     .separator {
@@ -180,13 +218,23 @@
         font-size: 1rem;
       }
 
-      nav {
+      nav.main-nav {
         gap: 1rem;
         margin-bottom: 1rem;
       }
 
-      nav a {
+      nav.main-nav a {
         padding: 0.5rem 0.9rem;
+        font-size: 0.85rem;
+      }
+
+      nav.reading-nav {
+        gap: 0.6rem;
+        padding: 0.5rem 0.6rem;
+      }
+
+      nav.reading-nav a {
+        padding: 0.25rem 0.5rem;
         font-size: 0.85rem;
       }
 
@@ -205,7 +253,7 @@
     <div class="header-content">
       <h1>Reading, Writing, and Inquiry Resources</h1>
       <p class="subtitle">Zuzanna Koziatek</p>
-      <nav>
+      <nav class="main-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About Your Instructor</a>
         <a href="reading-resources.html">Reading Resources</a>
@@ -217,9 +265,33 @@
 
   <div class="separator"></div>
 
+  <!-- reading-specific subnav (separate from main site nav) -->
+  <div class="reading-nav-wrapper" aria-hidden="false">
+    <nav class="reading-nav" aria-label="Reading section navigation">
+      <a href="#overview" class="active">Overview</a>
+      <a href="#texts">Texts</a>
+      <a href="#strategies">Strategies</a>
+      <a href="#assignments">Assignments</a>
+      <a href="#bibliography">Bibliography</a>
+    </nav>
+  </div>
+
   <div class="main-content">
     <div class="course-section">
-      <h2>Reading Resources</h2>
+      <h2 id="overview">Reading Resources</h2>
+      <p>...</p>
+
+      <!-- example anchors for the reading subnav -->
+      <h3 id="texts">Recommended Texts</h3>
+      <p>...</p>
+
+      <h3 id="strategies">Close Reading Strategies</h3>
+      <p>...</p>
+
+      <h3 id="assignments">Assignments & Activities</h3>
+      <p>...</p>
+
+      <h3 id="bibliography">Bibliography & Further Reading</h3>
       <p>...</p>
     </div>
   </div>
